@@ -5,6 +5,7 @@ from reportlab.lib.pagesizes import LETTER, landscape
 import tempfile
 from datetime import datetime
 import urllib.parse
+import openpyxl
 
 # --- Classes ---
 
@@ -248,3 +249,4 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
