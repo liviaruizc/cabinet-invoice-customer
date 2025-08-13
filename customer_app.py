@@ -171,8 +171,8 @@ pretty_to_clean = dict(zip(pretty_names, types))
 
 #-------------------
 # Markup
-params = st.query_params()
-markup_percent = float(params.get("markup", [0.0][0]))
+query_params = st.query_params()
+markup_percent = float(query_params.get("markup", [0.0][0]))
 st.session_state.markup_percent = markup_percent
 
 # --- Streamlit UI ---
@@ -249,5 +249,6 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
