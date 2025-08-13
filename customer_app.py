@@ -171,7 +171,7 @@ pretty_to_clean = dict(zip(pretty_names, types))
 
 #-------------------
 # Markup
-query_params = st.query_params()
+query_params = st.experimental_get_query_params()
 markup_percent = float(query_params.get("markup", [0.0][0]))
 st.session_state.markup_percent = markup_percent
 
@@ -249,6 +249,7 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
 
