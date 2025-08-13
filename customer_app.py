@@ -87,8 +87,8 @@ class ReceiptGenerator:
             x += len("RETAIL PRICE") + 100
             c.drawString(x, y, "UNIT PRICE (60% OFF)")
             x += len("UNIT PRICE (60% OFF)") + 100
-            c.drawString(x, y, "FINAL PRICE (with markup)")
-            x += len("FINAL PRICE (with markup)") + 150
+            c.drawString(x, y, "FINAL PRICE")
+            x += len("FINAL PRICE") + 150
             c.drawString(x, y, "QTY")
             x += len("QTY") + 100
             c.drawString(x, y, "TOTAL $")
@@ -132,7 +132,7 @@ class ReceiptGenerator:
             c.drawRightString(600, y, "You are saving:")
             c.drawRightString(750, y, f"$(-{savings_total:.2f})")
             y -= 15
-            c.drawRightString(600, y, "Subtotal (with discount):")
+            c.drawRightString(600, y, "Subtotal:")
             c.drawRightString(750, y, f"${total_sum:.2f}")
             y -= 15
             c.drawRightString(600, y, "Tax (6.5%):")
@@ -249,6 +249,7 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
 
