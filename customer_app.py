@@ -365,7 +365,7 @@ if selected_type in type_images:
             cols = st.columns(len(row_images))
             for col, img in zip(cols, row_images):
                 with col:
-                    st.image(img, caption=selected_type,use_container_width=True)
+                    st.markdown(f'<div class="img-container"><img src="{img}"></div>', unsafe_allow_html=True)
 
 filtered_df = df[df['TYPES_clean'] == pretty_to_clean[selected_type]]
 
@@ -444,6 +444,7 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
 
