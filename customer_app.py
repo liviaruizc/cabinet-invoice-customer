@@ -171,38 +171,38 @@ pretty_to_clean = dict(zip(pretty_names, types))
 
 #Cabinets image mapping
 type_images = {
-    "Base Cabinets": ["images/base_blind_corner.png", "images/base_cabinets.png",
-                      "images/base_cabinets_2doors.png"],
-    "1 Door": ["images/wall_cabinet_1_door_2_shelves.png",
-               "images/wall_cabinet_1door_3_shelves.png",
-               "images/wall_cabinet_1door_2_shelves.png"],
-    "Wall Cabinets": ["images/wall_cabinet_2_doors_2_shelves.png",
-                      "images/wall_cabinet_2_doors_3_shelves.png",
-                      "images/wall_cabinet_2doors_2_shelves.png"],
-    "3 Drawer Base": ["images/drawer_base.png"],
-    "Sink Base Cabinets": ["images/sink_base.png"],
-    "Glass Door": ["images/glass_door.png"],
-    "Base Lazy Suzan": ["images/base_lazy_suzan.png"],
-    "Base Blind Corner": ["images/base_blind_corner.png"],
-    "Base Diagonal Corner": ["images/base_diagonal_corner.png"],
-    "Fridge/Micro Cabinet": ["images/fridge_cabinet.png",
-                             "images/fridge_cabinet2.png"],
-    "Wall - Diagonal Corner": ["images/wall_diagonal_2_shelves.png",
-                               "images/wall_diagonal_3_shelves.png"],
-    "Pantry Cabinets": ["images/pantry_cabinet_single.png",
-                        "images/pantry_cabinet_double.png"],
-    "Trims And Moldings": ["images/quater_round_molding.png",
-                           "images/scribe_molding.png",
-                           "images/toe_kick.png",
-                           "images/outside_corner_molding.png",
-                           "images/countertop_molding.png",],
-    '3/4" Panels': ["images/3-4_panels.png"],
-    "Deco Doors": ["images/deco_doors.png"],
-    "Wall Wine Racks": ["images/wine_rack.png"],
-    "Wall Open End Shelves": ["images/wall_open_end_shelves.png"],
-    "Valance": ["images/valance.png"],
-    "Fillers": ["images/fillers.png"],
-    "Rosette Fillers": ["images/rosette_filler.png"],
+    "Base Cabinets": ["base_blind_corner.png", "base_cabinets.png",
+                      "base_cabinets_2doors.png"],
+    "1 Door": ["wall_cabinet_1_door_2_shelves.png",
+               "wall_cabinet_1door_3_shelves.png",
+               "wall_cabinet_1door_2_shelves.png"],
+    "Wall Cabinets": ["wall_cabinet_2_doors_2_shelves.png",
+                      "wall_cabinet_2_doors_3_shelves.png",
+                      "wall_cabinet_2doors_2_shelves.png"],
+    "3 Drawer Base": ["drawer_base.png"],
+    "Sink Base Cabinets": ["sink_base.png"],
+    "Glass Door": ["glass_door.png"],
+    "Base Lazy Suzan": ["base_lazy_suzan.png"],
+    "Base Blind Corner": ["base_blind_corner.png"],
+    "Base Diagonal Corner": ["base_diagonal_corner.png"],
+    "Fridge/Micro Cabinet": ["fridge_cabinet.png",
+                             "fridge_cabinet2.png"],
+    "Wall - Diagonal Corner": ["wall_diagonal_2_shelves.png",
+                               "wall_diagonal_3_shelves.png"],
+    "Pantry Cabinets": ["pantry_cabinet_single.png",
+                        "pantry_cabinet_double.png"],
+    "Trims And Moldings": ["quater_round_molding.png",
+                           "scribe_molding.png",
+                           "toe_kick.png",
+                           "outside_corner_molding.png",
+                           "countertop_molding.png",],
+    '3/4" Panels': ["3-4_panels.png"],
+    "Deco Doors": ["deco_doors.png"],
+    "Wall Wine Racks": ["wine_rack.png"],
+    "Wall Open End Shelves": ["wall_open_end_shelves.png"],
+    "Valance": ["valance.png"],
+    "Fillers": ["fillers.png"],
+    "Rosette Fillers": ["rosette_filler.png"],
 }
 
 #-------------------
@@ -402,6 +402,7 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
 
