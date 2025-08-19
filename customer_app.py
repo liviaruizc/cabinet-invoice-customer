@@ -171,38 +171,38 @@ pretty_to_clean = dict(zip(pretty_names, types))
 
 #Cabinets image mapping
 type_images = {
-    "Base Cabinets": ["images/base_blind_corner.png", "images/base_cabinets.png",
-                      "images/base_cabinets_2doors.png"],
-    "1 Door": ["images/wall_cabinet_1_door_2_shelves.png",
-               "images/wall_cabinet_1door_3_shelves.png",
-               "images/wall_cabinet_1door_2_shelves.png"],
-    "Wall Cabinets": ["images/wall_cabinet_2_doors_2_shelves.png",
-                      "images/wall_cabinet_2_doors_3_shelves.png",
-                      "images/wall_cabinet_2doors_2_shelves.png"],
-    "3 Drawer Base": ["images/drawer_base.png"],
-    "Sink Base Cabinets": ["images/sink_base.png"],
-    "Glass Door": ["images/glass_door.png"],
-    "Base Lazy Suzan": ["images/base_lazy_suzan.png"],
-    "Base Blind Corner": ["images/base_blind_corner.png"],
-    "Base Diagonal Corner": ["images/base_diagonal_corner.png"],
-    "Fridge/Micro Cabinet": ["images/fridge_cabinet.png",
-                             "images/fridge_cabinet2.png"],
-    "Wall - Diagonal Corner": ["images/wall_diagonal_2_shelves.png",
-                               "images/wall_diagonal_3_shelves.png"],
-    "Pantry Cabinets": ["images/pantry_cabinet_single.png",
-                        "images/pantry_cabinet_double.png"],
-    "Trims And Moldings": ["images/quater_round_molding.png",
-                           "images/scribe_molding.png",
-                           "images/toe_kick.png",
-                           "images/outside_corner_molding.png",
-                           "images/countertop_molding.png",],
-    '3/4" Panels': ["images/3-4_panels.png"],
-    "Deco Doors": ["images/deco_doors.png"],
-    "Wall Wine Racks": ["images/wine_rack.png"],
-    "Wall Open End Shelves": ["images/wall_open_end_shelves.png"],
-    "Valance": ["images/valance.png"],
-    "Fillers": ["images/fillers.png"],
-    "Rosette Fillers": ["images/rosette_filler.png"],
+    "Base Cabinets": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/base_cabinets.png?raw=true",
+                      "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/base_cabinets_2doors.png?raw=true"],
+    "1 Door": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_1_door_2_shelves.png?raw=true",
+               "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_1door_2_shelves.png?raw=true",
+               "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_1door_3_shelves.png?raw=true"],
+    "Wall Cabinets": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_2_doors_2_shelves.png?raw=true",
+                      "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_2_doors_3_shelves.png?raw=true",
+                      "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_cabinet_2doors_2_shelves.png?raw=true"],
+    "3 Drawer Base": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/drawer_base.png?raw=true"],
+    "Sink Base Cabinets": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/sink_base.png?raw=true"],
+    "Glass Door": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/sink_base.png?raw=true"],
+    "Base Lazy Suzan": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/base_lazy_suzan.png?raw=true"],
+    "Base Blind Corner": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/base_blind_corner.png?raw=true"],
+    "Base Diagonal Corner": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/base_diagonal_corner.png?raw=true"],
+    "Fridge/Micro Cabinet": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/fridge_cabinet%202.png?raw=true",
+                             "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/fridge_cabinet.png?raw=true"],
+    "Wall - Diagonal Corner": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_diagonal_2_shelves.png?raw=true",
+                               "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_diagonal_3_shelves.png?raw=true"],
+    "Pantry Cabinets": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/pantry_cabinet_single.png?raw=true",
+                        "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/pantry_cabinet_double.png?raw=true"],
+    "Trims And Moldings": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/quater_round_molding.png?raw=true",
+                           "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/scribe_molding.png?raw=true",
+                           "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/toe_kick.png?raw=true",
+                           "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/outside_corner_molding.png?raw=true",
+                           "https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/countertop_molding.png?raw=true",],
+    '3/4" Panels': ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/3-4_panels.png?raw=true"],
+    "Deco Doors": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/deco_doors.png?raw=true"],
+    "Wall Wine Racks": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wine_rack.png?raw=true"],
+    "Wall Open End Shelves": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/wall_open_end_shelves.png?raw=true"],
+    "Valance": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/valance.png?raw=true"],
+    "Fillers": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/filler.png?raw=true"],
+    "Rosette Fillers": ["https://github.com/liviaruizc/cabinet-invoice-customer/blob/main/roseette_filler.png?raw=true"],
 }
 
 #-------------------
@@ -444,6 +444,7 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
+
 
 
 
