@@ -3,6 +3,7 @@ import pandas as pd
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import LETTER, landscape
 import tempfile
+import math
 from datetime import datetime
 import urllib.parse
 import openpyxl
@@ -65,10 +66,9 @@ class ReceiptGenerator:
 
             # Header (logo & business info can go here)
             c.setFont('Helvetica-Bold', 14)
-            c.drawString(50, y - 10, "Mike Renovations LLC")
+            c.drawString(50, y - 10, "Cabinet Depot")
             c.setFont('Helvetica', 10)
-            c.drawString(50, y - 25, "Phone: 239-200-5772")
-            c.drawString(50, y - 40, "Email: contact@mikerenovations.com")
+            c.drawString(50, y - 25, "Email: cabinet.depot12@gmail.com")
 
             y -= 30
             x = 40
@@ -145,10 +145,10 @@ class ReceiptGenerator:
                 c.drawRightString(750, y, f"${shipping_price}")
             y-= 15
             c.drawRightString(600, y, "Delivery Fee:")
-            if delivery_price == 0.00:
+            if selected_location == "Pick Up":
                 c.drawRightString(750, y, "FREE")
             else:
-                c.drawRightString(750, y, f"${delivery_price}")
+                c.drawRightString(750, y, f"${delivery_price:.2f}")
             y-= 15
             c.drawRightString(600, y, "Final Total:")
             c.drawRightString(750, y, f"${final:.2f}")
@@ -169,6 +169,42 @@ types = df['TYPES_clean'].unique()
 pretty_names = [t.title() for t in types]
 pretty_to_clean = dict(zip(pretty_names, types))
 
+#Cabinets image mapping
+type_images = {
+    "Base Cabinets": ["images/base_blind_corner.png", "images/base_cabinets.png",
+                      "images/base_cabinets_2doors.png"],
+    "1 Door": ["images/wall_cabinet_1_door_2_shelves.png",
+               "images/wall_cabinet_1door_3_shelves.png",
+               "images/wall_cabinet_1door_2_shelves.png"],
+    "Wall Cabinets": ["images/wall_cabinet_2_doors_2_shelves.png",
+                      "images/wall_cabinet_2_doors_3_shelves.png",
+                      "images/wall_cabinet_2doors_2_shelves.png"],
+    "3 Drawer Base": ["images/drawer_base.png"],
+    "Sink Base Cabinets": ["images/sink_base.png"],
+    "Glass Door": ["images/glass_door.png"],
+    "Base Lazy Suzan": ["images/base_lazy_suzan.png"],
+    "Base Blind Corner": ["images/base_blind_corner.png"],
+    "Base Diagonal Corner": ["images/base_diagonal_corner.png"],
+    "Fridge/Micro Cabinet": ["images/fridge_cabinet.png",
+                             "images/fridge_cabinet2.png"],
+    "Wall - Diagonal Corner": ["images/wall_diagonal_2_shelves.png",
+                               "images/wall_diagonal_3_shelves.png"],
+    "Pantry Cabinets": ["images/pantry_cabinet_single.png",
+                        "images/pantry_cabinet_double.png"],
+    "Trims And Moldings": ["images/quater_round_molding.png",
+                           "images/scribe_molding.png",
+                           "images/toe_kick.png",
+                           "images/outside_corner_molding.png",
+                           "images/countertop_molding.png",],
+    '3/4" Panels': ["images/3-4_panels.png"],
+    "Deco Doors": ["images/deco_doors.png"],
+    "Wall Wine Racks": ["images/wine_rack.png"],
+    "Wall Open End Shelves": ["images/wall_open_end_shelves.png"],
+    "Valance": ["images/valance.png"],
+    "Fillers": ["images/fillers.png"],
+    "Rosette Fillers": ["images/rosette_filler.png"],
+}
+
 #-------------------
 # Markup
 query_params = st.query_params
@@ -177,16 +213,117 @@ markup_percent = float(markup_value)
 st.session_state.markup_percent = markup_percent
 
 # --- Streamlit UI ---
+st.markdown(
+    """
+    <style>
+    .header-container {
+        position: relative;
+        text-align: center;
+        color: white;
+        margin-bottom: 20px
+    }
+    .header-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .header-text {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Times New Roman', Times, serif;
+        background-color:rgba(255, 255, 255, 0.4); /* semi-transparent bg for readability */
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    
+    .header-text h1 {
+        margin: 0;
+        font-size: 40px;
+        color: black;
+    }
+    
+    .header-text p {
+        margin:5px 0 0 0;
+        font-size: 16px
+        color: black;
+    }
+    
+    .header-logo {
+        width: 80px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    </style>
+    
+    <div class="header-container">
+        <img src="https://scontent.ffxe1-2.fna.fbcdn.net/v/t39.30808-6/433459497_122112182360242422_80665106797432462_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=M5wYO61pOMAQ7kNvwFRBy9p&_nc_oc=AdmrG4ZigfA5D7kDbb2IcZVkfnizIOobYj_wccSWROr3kAwTkVc4AgvAxgIijSii-qc&_nc_zt=23&_nc_ht=scontent.ffxe1-2.fna&_nc_gid=nJpT5wsuOAFrLoCGV8rOaw&oh=00_AfU5ZRCdCGkBd1DbKcQqZ0_1aNDnShfylgPxhgh1_dlPJA&oe=68AA9DBF" class="header-logo"><br>
+        <img src="https://craftkitchenandbath.com/wp-content/uploads/2021/02/Craft-KB-Mclean-Kitchen-9-e1614843347132.jpg" class="header-image">
+        <div class="header-text">
+            <h1> Cabinet Depot </h1>
+            <p style="font-weight: bold; color: black; font-size: 18"> 
+            Unlocking the beauty of your space.</p>
+            <p <a href="mailto:cabinet.depot12@gmail.com" style="color:black;">cabinet.depot12@gmail.com</a>
+            </div>
+    </div>
+        """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #f8f8f8;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 shipping_options = [0.00, 100.00, 200.00, 300.00, 400.00]
-delivery_options = [0.00, 100.00, 200.00, 300.00, 400.00]
+delivery_options = {"Pick Up": 0.00,
+                    "Sarasota County": 400.00,
+                    "Port Charlotte": 350.00,
+                    "Punta Gorda": 300.00,
+                    "Lee County": 200.00,
+                    "Naples": 250.00,
+                    "Estero/Bonita Springs": 200.00,
+                    "Tampa": 500.00}
 
 
-st.title("🧰 Cabinet Order System")
+st.title("Order")
 
 cart = CartManager()
 
 selected_type = st.selectbox("Select cabinet type", pretty_names)
+
+#Show all images for that type
+if selected_type in type_images:
+    images = type_images[selected_type]
+
+    if len(images) == 1:
+        # Show a single image with fixed width
+        st.image(images[0], caption=selected_type, width=300)
+    else:
+    # Create columns based on number of images
+        #Show 3 per row
+        num_rows = math.ceil(len(images) / 3)
+        for row in range(num_rows):
+            row_images = images[row * 3: (row + 1) * 3]
+            cols = st.columns(len(row_images))
+            for col, img in zip(cols, row_images):
+                with col:
+                    st.image(img, caption=selected_type,use_container_width=True)
 
 filtered_df = df[df['TYPES_clean'] == pretty_to_clean[selected_type]]
 
@@ -205,19 +342,16 @@ if st.button("Add to Cart"):
 if st.button("Clear Cart"):
     cart.clear_cart()
 
-shipping_price = st.selectbox(
-    "Select shipping price",
-    options=shipping_options,
-    format_func=lambda x: "FREE" if x == 0 else f"${x:,.2f}"
-)
-st.session_state.shipping_price = shipping_price
+shipping_price = 400
 
-delivery_price = st.selectbox(
-    "Select delivery price",
-    options=delivery_options,
-    format_func=lambda x: "FREE" if x == 0 else f"${x:,.2f}"
+selected_location = st.selectbox(
+    "Select delivery type",
+    options=delivery_options.keys()
 )
-st.session_state.delivery_price = delivery_price
+#Get the price from dictionary
+delivery_price = delivery_options[selected_location]
+
+
 
 # Show cart
 cart_items = cart.get_cart()
@@ -233,6 +367,24 @@ if cart_items:
         "total": "Total"
     })
     df_display = df_display[["type", "item", "qty", "Retail Price", "Base Price (60% 0ff)", "You Save", "Final Price", "Total"]]
+
+    subtotal = df_display["Total"].sum()
+
+    # Append Shipping row
+    df_display.loc[len(df_display)] = ["Shipping", "", "", "", "", "", "", shipping_price]
+
+    # Append Delivery row
+    df_display.loc[len(df_display)] = ["Delivery", "", "", "", "", "", "", delivery_price]
+
+    # Calculate grand total
+    grand_total = subtotal + delivery_price + shipping_price
+    df_display.loc[len(df_display)] = ["", "Grand Total", "", "", "", "", "", grand_total]
+
+    # Format currency columns
+    currency_cols = ["Retail Price", "Base Price (60% 0ff)", "You Save", "Final Price", "Total"]
+    df_display[currency_cols] = df_display[currency_cols].applymap(
+        lambda x: f"${x:.2f}" if pd.notnull(x) and isinstance(x, (int, float)) else x
+    )
 
     st.dataframe(df_display, use_container_width=True)
 
@@ -250,7 +402,6 @@ if st.button("Generate PDF Invoice"):
             st.download_button("📄 Download Invoice", f, file_name="invoice.pdf", mime="application/pdf")
     else:
         st.warning("Your cart is empty!")
-
 
 
 
